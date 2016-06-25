@@ -8,12 +8,27 @@ angular.module('myApp.blogPost')
 
             var ROOT_URL = 'http://api.symfony-3.dev/app_dev.php/posts';
 
+            function get(id) {
+                return $http.get(ROOT_URL + '/' + id);
+            }
+
             function getAll() {
                 return $http.get(ROOT_URL);
             }
 
+            function post(blogPost) {
+                return $http.post(ROOT_URL, blogPost);
+            }
+
+            function put(id, data) {
+                return $http.put(ROOT_URL + '/' + id, data);
+            }
+
             return {
-                getAll: getAll
+                get: get,
+                getAll: getAll,
+                post: post,
+                put: put
             }
 
         }
