@@ -12,8 +12,18 @@ angular.module('myApp.blogPost')
                 return $http.get(ROOT_URL + '/' + id);
             }
 
-            function getAll() {
-                return $http.get(ROOT_URL);
+            function getAll(page, offset, filter, sort, direction) {
+                return $http({
+                    url: ROOT_URL,
+                    method: 'GET',
+                    params: {
+                        page: page || 1,
+                        limit: offset || 10,
+                        filter: filter || '',
+                        sort: sort || '',
+                        direction: direction || ''
+                    }
+                });
             }
 
             function post(blogPost) {
